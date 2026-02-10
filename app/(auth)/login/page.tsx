@@ -218,7 +218,7 @@ const Login = () => {
             <div className="text-center text-sm text-gray-600 dark:text-gray-400">
               Don&apos;t have an account?{" "}
               <Link
-                href="/signup"
+                href="/register"
                 className="text-primary hover:text-primary dark:hover:text-primary font-medium"
               >
                 Sign up for free
