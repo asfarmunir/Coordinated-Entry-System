@@ -29,6 +29,14 @@ const mainMenu = [
 
 const toolsMenu = [
   { label: "Case Managers", icon: "participant", route: "/case-managers" },
+  { label: "Analytics", icon: "analytic", route: "/case-managers" },
+  { label: "Intake Forms", icon: "form", route: "/case-managers" },
+];
+
+const managementMenu = [
+  { label: "Agency info", icon: "agency", route: "/settings" },
+  { label: "help center", icon: "help", route: "/settings" },
+  { label: "Settings", icon: "settings", route: "/settings" },
 ];
 
 const Icon = ({ name, className }: { name: string; className?: string }) => {
@@ -230,126 +238,189 @@ const Icon = ({ name, className }: { name: string; className?: string }) => {
   }
 };
 
-const Sidebar = () => {
+const Sidebar = ({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) => {
   const pathname = usePathname();
+
   return (
-    <aside className="w-full sm:w-72 lg:w-96 h-full bg-card border border-border rounded-2xl p-4 flex flex-col">
-      <div className="flex items-center gap-3 pb-4 border-b border-border">
-        <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-            />
-          </svg>
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-foreground">Userflow Inc.</p>
-          <p className="text-xs text-muted-foreground">FREE PLAN</p>
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <div className="flex items-center gap-2 bg-background border border-border rounded-xl px-3 py-2 text-sm text-muted-foreground">
-          <Icon name="search" className="w-4 h-4" />
-          <span>Search</span>
-          <span className="ml-auto text-xs">⌘ K</span>
-        </div>
-      </div>
-
-      <button className="mt-4 w-full flex items-center gap-3 bg-primary text-primary-foreground rounded-2xl px-4 py-3 shadow-sm">
-        <div className="w-9 h-9 rounded-xl bg-primary-foreground/15 flex items-center justify-center">
-          <Icon name="link" className="w-5 h-5" />
-        </div>
-        <div className="text-left">
-          <p className="text-sm font-semibold">Public Intake</p>
-          <p className="text-xs opacity-90">Shareable Links</p>
-        </div>
-      </button>
-
-      <div className="mt-6">
-        <p className="text-[10px] tracking-widest text-muted-foreground font-semibold px-2">
-          MAIN MENU
-        </p>
-        <div className="mt-2 space-y-1">
-          {mainMenu.map((item) => (
-            <Link
-              href={item.route || "#"}
-              key={item.label}
-              className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${
-                pathname === item.route
-                  ? "bg-primary text-primary-foreground"
-                  : "text-muted-foreground hover:bg-background"
-              }`}
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="hidden md:flex w-full md:w-72 lg:w-80 h-full bg-card border border-border rounded-2xl p-4 flex-col overflow-y-auto">
+        <div className="flex items-center gap-3 pb-4 border-b border-border">
+          <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
             >
-              <Image
-                src={`/icons/${item.icon}.svg`}
-                alt={item.label}
-                width={16}
-                height={16}
-                className={`w-4 h-4  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
-              <span className="flex-1">{item.label}</span>
-              {item.count !== undefined && (
-                <span
-                  className={`text-xs px-2 py-0.5 rounded-full ${
-                    pathname === item.route
-                      ? "bg-primary-foreground/20 text-primary-foreground"
-                      : "bg-card text-muted-foreground"
-                  }`}
-                >
-                  {item.count}
-                </span>
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-6">
-        <p className="text-[10px] tracking-widest text-muted-foreground font-semibold px-2">
-          TOOLS
-        </p>
-        <div className="mt-2 space-y-1">
-          {toolsMenu.map((item) => (
-            <Link
-              href="#"
-              key={item.label}
-              className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-muted-foreground hover:bg-background"
-            >
-              <Image
-                src={`/icons/${item.icon}.svg`}
-                alt={item.label}
-                width={16}
-                height={16}
-                className={`w-4 h-4  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
-              />{" "}
-              <span className="flex-1">{item.label}</span>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-auto pt-4 border-t border-border">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
-            CH
+            </svg>
           </div>
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-foreground">
-              Community Hope
+          <div>
+            <p className="text-sm 2xl:text-base font-semibold text-foreground">
+              Userflow Inc.
             </p>
-            <p className="text-xs text-muted-foreground">AGENCY ADMIN</p>
+            <p className="text-xs 2xl:text-sm text-muted-foreground">
+              FREE PLAN
+            </p>
           </div>
+        </div>
+
+        <div className="mt-4">
+          <div className="flex items-center gap-2 bg-background border border-border rounded-xl px-3 py-2 text-sm 2xl:text-base text-muted-foreground">
+            <Icon name="search" className="w-4 h-4" />
+            <span>Search</span>
+            <span className="ml-auto text-xs 2xl:text-sm">⌘ K</span>
+          </div>
+        </div>
+
+        <button className="mt-4 w-full flex items-center gap-3 bg-primary text-primary-foreground rounded-2xl px-4 py-3 shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-primary-foreground/15 flex items-center justify-center">
+            <Icon name="link" className="w-5 h-5" />
+          </div>
+          <div className="text-left">
+            <p className="text-sm 2xl:text-base font-semibold">Public Intake</p>
+            <p className="text-xs 2xl:text-sm opacity-90">Shareable Links</p>
+          </div>
+        </button>
+
+        <div className="mt-6">
+          <p className="text-[10px] 2xl:text-xs tracking-widest text-muted-foreground font-semibold px-2">
+            MAIN MENU
+          </p>
+          <div className="mt-2 space-y-1">
+            {mainMenu.map((item) => (
+              <Link
+                href={item.route || "#"}
+                key={item.label}
+                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base transition-colors ${
+                  pathname === item.route
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-background"
+                }`}
+              >
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt={item.label}
+                  width={16}
+                  height={16}
+                  className={`w-4 2xl:w-5 h-4 2xl:h-5  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+                />{" "}
+                <span className="flex-1">{item.label}</span>
+                {item.count !== undefined && (
+                  <span
+                    className={`text-xs 2xl:text-sm px-2 py-0.5 rounded-full ${
+                      pathname === item.route
+                        ? "bg-primary-foreground/20 text-primary-foreground"
+                        : "bg-card text-muted-foreground"
+                    }`}
+                  >
+                    {item.count}
+                  </span>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <p className="text-[10px] 2xl:text-xs tracking-widest text-muted-foreground font-semibold px-2">
+            TOOLS
+          </p>
+          <div className="mt-2 space-y-1">
+            {toolsMenu.map((item) => (
+              <Link
+                href="#"
+                key={item.label}
+                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base text-muted-foreground hover:bg-background"
+              >
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt={item.label}
+                  width={16}
+                  height={16}
+                  className={`w-4 2xl:w-5 h-4 2xl:h-5  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+                />{" "}
+                <span className="flex-1">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div className="my-6 border-t">
+          <div className="mt-2 space-y-1">
+            {managementMenu.map((item) => (
+              <Link
+                href={item.route}
+                key={item.label}
+                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base text-muted-foreground hover:bg-background"
+              >
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt={item.label}
+                  width={16}
+                  height={16}
+                  className={`w-4 2xl:w-5 h-4 2xl:h-5  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+                />{" "}
+                <span className="flex-1">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-auto pt-4 border-t border-border">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+              CH
+            </div>
+            <div className="flex-1">
+              <p className="text-sm 2xl:text-base font-semibold text-foreground">
+                Community Hope
+              </p>
+              <p className="text-xs 2xl:text-sm text-muted-foreground">
+                AGENCY ADMIN
+              </p>
+            </div>
+            <svg
+              className="w-4 h-4 text-muted-foreground"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </div>
+      </aside>
+
+      {/* Mobile Sidebar */}
+      <aside
+        className={`md:hidden fixed top-0 left-0 h-full w-80 max-w-[85vw] bg-card border-r border-border p-4 flex flex-col overflow-y-auto z-50 transition-transform duration-300 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-2 rounded-xl hover:bg-background transition-colors"
+        >
           <svg
-            className="w-4 h-4 text-muted-foreground"
+            className="w-5 h-5 text-muted-foreground"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -358,12 +429,167 @@ const Sidebar = () => {
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
+              d="M6 18L18 6M6 6l12 12"
             />
           </svg>
+        </button>
+
+        <div className="flex items-center gap-3 pb-4 border-b border-border">
+          <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              />
+            </svg>
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-foreground">
+              Userflow Inc.
+            </p>
+            <p className="text-xs text-muted-foreground">FREE PLAN</p>
+          </div>
         </div>
-      </div>
-    </aside>
+
+        <div className="mt-4">
+          <div className="flex items-center gap-2 bg-background border border-border rounded-xl px-3 py-2 text-sm text-muted-foreground">
+            <Icon name="search" className="w-4 h-4" />
+            <span>Search</span>
+            <span className="ml-auto text-xs">⌘ K</span>
+          </div>
+        </div>
+
+        <button className="mt-4 w-full flex items-center gap-3 bg-primary text-primary-foreground rounded-2xl px-4 py-3 shadow-sm">
+          <div className="w-9 h-9 rounded-xl bg-primary-foreground/15 flex items-center justify-center">
+            <Icon name="link" className="w-5 h-5" />
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-semibold">Public Intake</p>
+            <p className="text-xs opacity-90">Shareable Links</p>
+          </div>
+        </button>
+
+        <div className="mt-6">
+          <p className="text-[10px] tracking-widest text-muted-foreground font-semibold px-2">
+            MAIN MENU
+          </p>
+          <div className="mt-2 space-y-1">
+            {mainMenu.map((item) => (
+              <Link
+                href={item.route || "#"}
+                key={item.label}
+                onClick={onClose}
+                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${
+                  pathname === item.route
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-background"
+                }`}
+              >
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt={item.label}
+                  width={16}
+                  height={16}
+                  className={`w-4 2xl:w-5 h-4 2xl:h-5  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+                />
+                <span className="flex-1">{item.label}</span>
+                {item.count !== undefined && (
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full ${
+                      pathname === item.route
+                        ? "bg-primary-foreground/20 text-primary-foreground"
+                        : "bg-card text-muted-foreground"
+                    }`}
+                  >
+                    {item.count}
+                  </span>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <p className="text-[10px] tracking-widest text-muted-foreground font-semibold px-2">
+            TOOLS
+          </p>
+          <div className="mt-2 space-y-1">
+            {toolsMenu.map((item) => (
+              <Link
+                href={item.route}
+                key={item.label}
+                onClick={onClose}
+                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-muted-foreground hover:bg-background"
+              >
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt={item.label}
+                  width={16}
+                  height={16}
+                  className={`w-4 2xl:w-5 h-4 2xl:h-5   ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+                />
+                <span className="flex-1">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="my-6 border-t">
+          <div className="mt-2 space-y-1">
+            {managementMenu.map((item) => (
+              <Link
+                href={item.route}
+                key={item.label}
+                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base text-muted-foreground hover:bg-background"
+              >
+                <Image
+                  src={`/icons/${item.icon}.svg`}
+                  alt={item.label}
+                  width={16}
+                  height={16}
+                  className={`w-4 2xl:w-5 h-4 2xl:h-5  ${pathname === item.route ? " invert brightness-0 filter" : " dark:invert"} `}
+                />{" "}
+                <span className="flex-1">{item.label}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-auto pt-4 border-t border-border">
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-semibold">
+              CH
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-foreground">
+                Community Hope
+              </p>
+              <p className="text-xs text-muted-foreground">AGENCY ADMIN</p>
+            </div>
+            <svg
+              className="w-4 h-4 text-muted-foreground"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 };
 

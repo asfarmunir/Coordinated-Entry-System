@@ -1,7 +1,8 @@
+import Bulletins from "@/components/shared/Bulletins";
 import React from "react";
 
-const Bulletins = () => {
-  return <div>Bulletins</div>;
+const BulletinPage = () => {
+  return <Bulletins />;
 };
 
-export default Bulletins;
+export default BulletinPage;
