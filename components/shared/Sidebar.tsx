@@ -34,8 +34,8 @@ const toolsMenu = [
 ];
 
 const managementMenu = [
-  { label: "Agency info", icon: "agency", route: "/settings" },
-  { label: "help center", icon: "help", route: "/settings" },
+  { label: "Agency info", icon: "agency", route: "/agency-info" },
+  { label: "help center", icon: "help", route: "/support" },
   { label: "Settings", icon: "settings", route: "/settings" },
 ];
 
@@ -343,7 +343,11 @@ const Sidebar = ({
               <Link
                 href="#"
                 key={item.label}
-                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base text-muted-foreground hover:bg-background"
+                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base transition-colors ${
+                  pathname === item.route
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-background"
+                }`}
               >
                 <Image
                   src={`/icons/${item.icon}.svg`}
@@ -363,7 +367,11 @@ const Sidebar = ({
               <Link
                 href={item.route}
                 key={item.label}
-                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base text-muted-foreground hover:bg-background"
+                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base transition-colors ${
+                  pathname === item.route
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-background"
+                }`}
               >
                 <Image
                   src={`/icons/${item.icon}.svg`}
@@ -526,7 +534,11 @@ const Sidebar = ({
                 href={item.route}
                 key={item.label}
                 onClick={onClose}
-                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm text-muted-foreground hover:bg-background"
+                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${
+                  pathname === item.route
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-background"
+                }`}
               >
                 <Image
                   src={`/icons/${item.icon}.svg`}
@@ -547,7 +559,11 @@ const Sidebar = ({
               <Link
                 href={item.route}
                 key={item.label}
-                className="flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base text-muted-foreground hover:bg-background"
+                className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${
+                  pathname === item.route
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:bg-background"
+                }`}
               >
                 <Image
                   src={`/icons/${item.icon}.svg`}

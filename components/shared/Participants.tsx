@@ -155,7 +155,7 @@ const Participants = () => {
             <span className="hidden sm:inline">Archived</span>
           </button>
         </div>
-        <button className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity text-sm md:text-base">
+        <button className="flex items-center justify-center gap-2 px-5 py-3.5 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity text-sm md:text-base">
           <svg
             className="w-5 h-5"
             fill="none"

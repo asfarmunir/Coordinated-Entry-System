@@ -297,7 +297,7 @@ const Bulletins = () => {
         </div>
         <button
           onClick={() => setShowAddModal(true)}
-          className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity text-sm md:text-base"
+          className="flex items-center justify-center gap-2 px-5 py-3.5 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity text-sm md:text-base"
         >
           <svg
             className="w-5 h-5"
