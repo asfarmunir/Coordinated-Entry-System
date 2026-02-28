@@ -23,7 +23,7 @@ const mainMenu = [
   { label: "Assistance", icon: "assistance" },
   { label: "Appointments", icon: "appointments" },
   { label: "Resources", icon: "resources", route: "/resources" },
-  { label: "Referrals", icon: "referrals" },
+  { label: "Referrals", icon: "referrals", route: "/referrals" },
   { label: "Messages", icon: "messages", count: 33 },
 ];
 
