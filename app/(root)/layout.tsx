@@ -40,8 +40,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       {/* Sidebar */}
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-      <section className="flex relative flex-col items-start w-full">
-        <section className="h-full overflow-y-auto max-h-svh w-full relative">
+      <section className="flex relative flex-col items-start w-full min-w-0">
+        <section className="h-full overflow-y-auto max-h-svh w-full min-w-0 relative">
           {children}
         </section>
       </section>

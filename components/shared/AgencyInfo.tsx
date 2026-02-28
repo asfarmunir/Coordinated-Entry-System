@@ -97,7 +97,7 @@ const AgencyInfo = () => {
   };
 
   return (
-    <div className="h-full bg-card-foreground rounded-2xl p-3 md:p-6">
+    <div className="min-h-full bg-card-foreground rounded-2xl p-3 md:p-6">
       {/* Header with Edit Button */}
       <div className="flex flex-col md:flex-row md:items-start justify-between mb-6 gap-4">
         <div>
