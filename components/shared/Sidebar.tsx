@@ -29,8 +29,8 @@ const mainMenu = [
 
 const toolsMenu = [
   { label: "Case Managers", icon: "participant", route: "/case-managers" },
-  { label: "Analytics", icon: "analytic", route: "/case-managers" },
-  { label: "Intake Forms", icon: "form", route: "/case-managers" },
+  { label: "Analytics", icon: "analytic", route: "/analytics" },
+  // { label: "Intake Forms", icon: "form", route: "/case-managers" },
 ];
 
 const managementMenu = [
