@@ -341,7 +341,7 @@ const Sidebar = ({
           <div className="mt-2 space-y-1">
             {toolsMenu.map((item) => (
               <Link
-                href="#"
+                href={item.route}
                 key={item.label}
                 className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm 2xl:text-base transition-colors ${
                   pathname === item.route
