@@ -16,12 +16,17 @@ const mainMenu = [
     label: "Assistance Requests",
     icon: "assistance-request",
     count: 5,
+
+    route: "/assistance-request",
+  },
+  // { label: "Data Import", icon: "import", route: "/import" },
+  { label: "Network Directory", icon: "network", route: "/network-directory" },
+  {
+    label: "Assistance",
+    icon: "assistance",
     route: "/assistance",
   },
-  { label: "Data Import", icon: "import", route: "/import" },
-  { label: "Network Directory", icon: "network", route: "/directory" },
-  { label: "Assistance", icon: "assistance" },
-  { label: "Appointments", icon: "appointments" },
+  { label: "Appointments", icon: "appointments", route: "/appointments" },
   { label: "Resources", icon: "resources", route: "/resources" },
   { label: "Referrals", icon: "referrals", route: "/referrals" },
   { label: "Messages", icon: "messages", count: 33, route: "/messages" },
@@ -399,19 +404,6 @@ const Sidebar = ({
                 AGENCY ADMIN
               </p>
             </div>
-            <svg
-              className="w-4 h-4 text-muted-foreground"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
           </div>
         </div>
       </aside>
