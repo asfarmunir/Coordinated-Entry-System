@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface ScreenHeaderProps {
@@ -17,24 +18,27 @@ const ScreenHeader = ({ title, description }: ScreenHeaderProps) => {
         </p>
       </div>
       <div className="flex items-center gap-2 md:gap-3">
-        <button className="hidden md:flex items-center gap-2 px-4 py-2 rounded-xl border border-primary text-primary hover:bg-primary/10 transition-colors">
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
-          <span className="font-medium text-sm 2xl:text-base">
-            Help & Support
-          </span>
-        </button>
+        <Link href={"/support"}>
+          <button className="hidden md:flex cursor-pointer items-center gap-2 px-4 py-2 rounded-xl border border-primary text-primary dark:text-blue-400 hover:bg-primary/10 transition-colors">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+            <span className="font-medium text-sm 2xl:text-base">
+              Help & Support
+            </span>
+          </button>
+        </Link>
+
         <button className="p-2 hidden lg:flex rounded-xl border border-border text-muted-foreground hover:bg-background transition-colors">
           <svg
             className="w-5 h-5"

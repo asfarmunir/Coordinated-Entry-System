@@ -27,7 +27,7 @@ export function ThemeToggle() {
       <div className="flex items-center gap-1 rounded-full bg-white dark:bg-gray-900 p-1 shadow-lg border border-gray-200 dark:border-gray-700 transition-all">
         <button
           onClick={() => setTheme("light")}
-          className={`flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200 ${
+          className={`flex items-center justify-center w-6 md:w-9 h-6 md:h-9 rounded-full transition-all duration-200 ${
             theme === "light"
               ? "bg-yellow-400 text-white shadow-md scale-105"
               : "bg-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -41,7 +41,7 @@ export function ThemeToggle() {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="w-5 h-5"
+            className="w-3.5 md:w-5 h-3.5 md:h-5"
           >
             <path
               strokeLinecap="round"
@@ -52,7 +52,7 @@ export function ThemeToggle() {
         </button>
         <button
           onClick={() => setTheme("dark")}
-          className={`flex items-center justify-center w-9 h-9 rounded-full transition-all duration-200 ${
+          className={`flex items-center justify-center w-6 md:w-9 h-6 md:h-9 rounded-full transition-all duration-200 ${
             theme === "dark"
               ? "bg-indigo-600 text-white shadow-md scale-105"
               : "bg-transparent text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
@@ -66,7 +66,7 @@ export function ThemeToggle() {
             viewBox="0 0 24 24"
             strokeWidth={2}
             stroke="currentColor"
-            className="w-5 h-5"
+            className="w-3.5 md:w-5 h-3.5 md:h-5"
           >
             <path
               strokeLinecap="round"
