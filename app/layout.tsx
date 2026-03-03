@@ -12,8 +12,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "CopyWins",
-  description: "Copy, Win, Repeat.",
+  title: "Coordinated Entry System",
+  description:
+    "A comprehensive platform for managing and coordinating services for individuals experiencing homelessness.",
 };
 
 export default function RootLayout({
