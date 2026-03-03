@@ -317,7 +317,7 @@ const Bulletins = () => {
       </div>
 
       {/* Bulletins Feed */}
-      <div className="space-y-4 pb-4">
+      <div className="space-y-4  pb-12 md:pb-4 ">
         {filteredBulletins.map((bulletin) => (
           <div
             key={bulletin.id}
@@ -453,7 +453,7 @@ const Bulletins = () => {
           {/* Modal Content */}
           <div className="space-y-6">
             <div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4  ">
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Bulletin Title *

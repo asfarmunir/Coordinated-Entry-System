@@ -249,7 +249,7 @@ const NetwordDirectory = () => {
         <>
           {/* Search Section */}
           <div className="bg-card rounded-2xl p-4 md:p-6 border border-border mb-6">
-            <div className="flex flex-col md:flex-row gap-4 mb-4">
+            <div className="flex flex-row gap-2 md:gap-4 mb-4">
               {/* Search Input */}
               <div className="flex-1">
                 <label className="block text-sm font-medium text-foreground mb-2">
@@ -266,7 +266,7 @@ const NetwordDirectory = () => {
 
               {/* Search Button */}
               <div className="flex items-end">
-                <button className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity">
+                <button className="flex items-center gap-2 px-5 py-3 md:py-2.5 bg-primary text-primary-foreground rounded-xl font-medium hover:opacity-90 transition-opacity">
                   <svg
                     className="w-5 h-5"
                     fill="none"
@@ -280,12 +280,12 @@ const NetwordDirectory = () => {
                       d="M21 21l-4.35-4.35M10.5 18a7.5 7.5 0 100-15 7.5 7.5 0 000 15z"
                     />
                   </svg>
-                  Search
+                  <span className=" hidden md:block">Search</span>
                 </button>
               </div>
 
               {/* Search By Dropdown */}
-              <div className="flex-1 md:max-w-xs">
+              <div className="flex-1 hidden md:block md:max-w-xs">
                 <label className="block text-sm font-medium text-foreground mb-2">
                   Search By
                 </label>
@@ -459,14 +459,14 @@ const NetwordDirectory = () => {
           </div>
 
           {/* Search Results */}
-          <div className="mb-4">
+          <div className="mb-4 ">
             <h3 className="text-lg font-semibold text-foreground">
               Search Results
             </h3>
           </div>
 
           {/* Results List */}
-          <div className="space-y-4">
+          <div className="space-y-4 pb-12 md:pb-0">
             {filteredParticipants.map((participant) => (
               <div
                 key={participant.id}
@@ -615,7 +615,7 @@ const NetwordDirectory = () => {
                   {/* View History Button */}
                   <button
                     onClick={() => handleViewHistory(participant)}
-                    className="flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
+                    className="flex items-center justify-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-opacity whitespace-nowrap"
                   >
                     <svg
                       className="w-4 h-4"

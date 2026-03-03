@@ -550,6 +550,7 @@ const Sidebar = ({
             {managementMenu.map((item) => (
               <Link
                 href={item.route}
+                onClick={onClose}
                 key={item.label}
                 className={`flex items-center gap-3 px-3 py-2 rounded-xl text-sm transition-colors ${
                   pathname === item.route

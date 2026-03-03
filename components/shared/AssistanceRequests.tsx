@@ -88,7 +88,7 @@ const AssistanceRequests = () => {
       case "pending":
         return "bg-[#fef3c7] text-[#92400e] dark:bg-[#854d0e]/20 dark:text-[#fbbf24]";
       case "urgent":
-        return "bg-[#fee2e2] text-[#991b1b] dark:bg-[#7f1d1d]/20 dark:text-[#fca5a5]";
+        return "bg-[#fee2e2] te dark:text-[#fca5a5]";
       case "completed":
         return "bg-[#d1fae5] text-[#065f46] dark:bg-[#065f46]/20 dark:text-[#6ee7b7]";
       default:
@@ -128,7 +128,7 @@ const AssistanceRequests = () => {
           </div>
         </div>
 
-        <div className="bg-[#fee2e2] dark:bg-[#7f1d1d]/20 rounded-2xl p-4 md:p-6 border border-[#fecaca] dark:border-[#991b1b]">
+        <div className="bg-card rounded-2xl p-4 md:p-6 border border-border">
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-xl bg-[#fca5a5]/30 dark:bg-[#991b1b]/30 flex items-center justify-center">
               <svg
@@ -211,9 +211,9 @@ const AssistanceRequests = () => {
 
       {/* Filters */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 flex-1">
+        <div className="flex flex-col sm:flex-row w-full md:w-fit items-start sm:items-center gap-3 flex-1">
           {/* Filters Dropdown */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full md:w-fit ">
             <svg
               className="w-5 h-5 text-muted-foreground"
               fill="none"
@@ -234,12 +234,12 @@ const AssistanceRequests = () => {
               type="text"
               value={filterValue}
               onChange={(e) => setFilterValue(e.target.value)}
-              className="px-3 py-2 rounded-xl bg-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary min-w-[200px]"
+              className="px-3 py-2 w-full rounded-xl bg-card border border-border text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary min-w-[200px]"
             />
           </div>
 
           {/* Date Filter */}
-          <div className="flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-2">
             <span className="text-sm font-medium text-foreground">Date:</span>
             <button className="flex items-center gap-2 px-3 py-2 rounded-xl bg-card border border-border text-sm text-muted-foreground hover:bg-muted transition-colors">
               <svg
@@ -266,7 +266,7 @@ const AssistanceRequests = () => {
       </div>
 
       {/* Service Requests List */}
-      <div className="space-y-4">
+      <div className="space-y-4 pb-12 md:pb-0">
         {requests.map((request) => (
           <div
             key={request.id}

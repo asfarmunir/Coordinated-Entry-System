@@ -485,7 +485,7 @@ const Messages = () => {
                 </div>
               </>
             ) : (
-              <div className="flex-1 flex items-center justify-center">
+              <div className="flex-1 flex items-center py-12 md:py-0 justify-center">
                 <div className="text-center">
                   <svg
                     className="w-16 h-16 mx-auto text-muted-foreground mb-4"
