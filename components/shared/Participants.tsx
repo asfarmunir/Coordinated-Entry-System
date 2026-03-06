@@ -588,7 +588,7 @@ const Participants = () => {
                   New Participant Registration
                 </h2>
                 <p className="text-xs text-muted-foreground uppercase tracking-wide">
-                  Coordinated Entry System
+                  Coordinated Entry Network
                 </p>
               </div>
             </div>

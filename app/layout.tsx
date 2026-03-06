@@ -12,7 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Coordinated Entry System",
+  title: "Coordinated Entry Network",
   description:
     "A comprehensive platform for managing and coordinating services for individuals experiencing homelessness.",
 };

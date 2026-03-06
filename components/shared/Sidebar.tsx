@@ -257,28 +257,14 @@ const Sidebar = ({
       {/* Desktop Sidebar */}
       <aside className="hidden md:flex w-full md:w-72 lg:w-80 h-full bg-card border border-border rounded-2xl p-4 flex-col overflow-y-auto">
         <div className="flex items-center gap-3 pb-4 border-b border-border">
-          <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-              />
-            </svg>
-          </div>
+          <Image src="/logo.png" alt="Logo" width={48} height={48} />
           <div>
             <p className="text-sm 2xl:text-base font-semibold text-foreground">
-              Userflow Inc.
+              Coordinated Entry Network
             </p>
-            <p className="text-xs 2xl:text-sm text-muted-foreground">
+            {/* <p className="text-xs 2xl:text-sm text-muted-foreground">
               FREE PLAN
-            </p>
+            </p> */}
           </div>
         </div>
 
@@ -404,6 +390,21 @@ const Sidebar = ({
                 AGENCY ADMIN
               </p>
             </div>
+            <Link href={"/login"}>
+              <svg
+                className="w-4 h-4 text-muted-foreground"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
+                />
+              </svg>
+            </Link>
           </div>
         </div>
       </aside>
@@ -435,26 +436,14 @@ const Sidebar = ({
         </button>
 
         <div className="flex items-center gap-3 pb-4 border-b border-border">
-          <div className="w-10 h-10 rounded-xl bg-primary text-primary-foreground flex items-center justify-center">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-              />
-            </svg>
-          </div>
+          <Image src="/logo.png" alt="Logo" width={48} height={48} />
           <div>
-            <p className="text-sm font-semibold text-foreground">
-              Userflow Inc.
+            <p className="text-sm 2xl:text-base font-semibold text-foreground -ml-2">
+              Coordinated Entry Network
             </p>
-            <p className="text-xs text-muted-foreground">FREE PLAN</p>
+            {/* <p className="text-xs 2xl:text-sm text-muted-foreground">
+              FREE PLAN
+            </p> */}
           </div>
         </div>
 
@@ -582,19 +571,21 @@ const Sidebar = ({
               </p>
               <p className="text-xs text-muted-foreground">AGENCY ADMIN</p>
             </div>
-            <svg
-              className="w-4 h-4 text-muted-foreground"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <Link href={"/login"}>
+              <svg
+                className="w-4 h-4 text-muted-foreground"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"
+                />
+              </svg>
+            </Link>
           </div>
         </div>
       </aside>
