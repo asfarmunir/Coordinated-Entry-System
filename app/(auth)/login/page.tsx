@@ -3,13 +3,28 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams, useRouter } from "next/navigation";
+import { setUserRole } from "@/lib/userRole";
 
 type TabType = "agency" | "participant" | "admin";
 
 const Login = () => {
-  const [activeTab, setActiveTab] = useState<TabType>("agency");
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const initialTab = (
+    ["agency", "participant", "admin"].includes(searchParams.get("tab") ?? "")
+      ? searchParams.get("tab")
+      : "agency"
+  ) as TabType;
+
+  const [activeTab, setActiveTab] = useState<TabType>(initialTab);
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+
+  const handleSignIn = () => {
+    setUserRole(activeTab);
+    router.push(activeTab === "participant" ? "/participant-screen" : "/");
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-card-foreground  px-4 py-8">
@@ -27,7 +42,11 @@ const Login = () => {
             Coordinated Entry Network
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Sign in to manage your agency
+            {activeTab === "participant"
+              ? "Sign in to access your services"
+              : activeTab === "admin"
+                ? "Sign in to the admin panel"
+                : "Sign in to manage your agency"}
           </p>
         </div>
 
@@ -71,7 +90,11 @@ const Login = () => {
             Welcome back
           </h2>
           <p className="text-gray-600 dark:text-gray-400 mb-6">
-            Enter your credentials to access your account
+            {activeTab === "participant"
+              ? "Enter your credentials to access your services"
+              : activeTab === "admin"
+                ? "Enter your admin credentials to continue"
+                : "Enter your credentials to access your account"}
           </p>
 
           <form className="space-y-5">
@@ -175,27 +198,26 @@ const Login = () => {
             </div>
 
             {/* Sign In Button */}
-            <Link href={"/"}>
-              <button
-                type="submit"
-                className="w-full bg-primary   cursor-pointer mb-4  text-white font-medium py-3 px-4 rounded-2xl transition-colors flex items-center justify-center gap-2 shadow-sm"
+            <button
+              type="button"
+              onClick={handleSignIn}
+              className="w-full bg-primary cursor-pointer mb-4 text-white font-medium py-3 px-4 rounded-2xl transition-colors flex items-center justify-center gap-2 shadow-sm"
+            >
+              Sign in
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
               >
-                Sign in
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </button>
-            </Link>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </button>
 
             {/* Divider */}
             <div className="relative">
@@ -213,10 +235,16 @@ const Login = () => {
             <div className="text-center text-sm text-gray-600 dark:text-gray-400">
               Don&apos;t have an account?{" "}
               <Link
-                href="/register"
+                href={
+                  activeTab === "participant"
+                    ? "/register/participant"
+                    : "/register"
+                }
                 className="text-primary hover:text-primary dark:hover:text-primary font-medium"
               >
-                Sign up for free
+                {activeTab === "participant"
+                  ? "Register as participant"
+                  : "Sign up for free"}
               </Link>
             </div>
           </form>

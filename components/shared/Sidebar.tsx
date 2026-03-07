@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { clearUserRole } from "@/lib/userRole";
 
 const mainMenu = [
   {
@@ -390,7 +391,7 @@ const Sidebar = ({
                 AGENCY ADMIN
               </p>
             </div>
-            <Link href={"/login"}>
+            <Link href={"/login"} onClick={clearUserRole}>
               <svg
                 className="w-4 h-4 text-muted-foreground"
                 fill="none"
@@ -571,7 +572,7 @@ const Sidebar = ({
               </p>
               <p className="text-xs text-muted-foreground">AGENCY ADMIN</p>
             </div>
-            <Link href={"/login"}>
+            <Link href={"/login"} onClick={clearUserRole}>
               <svg
                 className="w-4 h-4 text-muted-foreground"
                 fill="none"
